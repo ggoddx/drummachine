@@ -1,0 +1,23 @@
+.drumrow p
+{
+  display: inline-block;
+  width: 50px;
+}
+
+.drumbutton
+{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 2px;
+}
+
+.unselected
+{
+  background-color: green;
+}
+
+.selected
+{
+  background-color: red;
+}

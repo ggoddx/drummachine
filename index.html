@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Drum Machine</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <meta charset="UTF-8"/>
+  </head>
+  <body>
+    <h1>Drum Machine</h1>
+    <button id="playbutton" class="notDrumming" onclick="playBeat(0)">Play</button>
+    <audio id="kickSound" class="silent">
+      <source src="./audio/alone.mp3" type="audio/mpeg"/>
+    </audio>
+    <audio id="snareSound" class="silent">
+      <source src="./audio/test.m4a" type="audio/mp4"/>
+    </audio>
+    <div id="kickDrum" class="drumrow">
+      <p>Kick:</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <div id="snareDrum" class="drumrow">
+      <p>Snare:</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <script src="./js/drumMachine.js"></script>
+  </body>
+</html>
