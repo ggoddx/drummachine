@@ -8,28 +8,155 @@
     <meta charset="UTF-8"/>
   </head>
   <body>
+    <div id="centerAligner">
     <h1>Drum Machine</h1>
-    <button id="playbutton" class="notDrumming" onclick="playBeat(0)">Play</button>
+    <h3>By George Göddard &amp; Sina Haghani</h3>
+    <br>
     <audio id="kickSound" class="silent">
-      <source src="./audio/alone.mp3" type="audio/mpeg"/>
+      <source src="./audio/kick.m4a" type="audio/mp4"/>
     </audio>
     <audio id="snareSound" class="silent">
-      <source src="./audio/test.m4a" type="audio/mp4"/>
+      <source src="./audio/snare.m4a" type="audio/mp4"/>
+    </audio>
+    <audio id="hihatSound" class="silent">
+      <source src="./audio/hihat.m4a" type="audio/mp4"/>
+    </audio>
+    <audio id="crashSound" class="silent">
+      <source src="./audio/crash.m4a" type="audio/mp4"/>
+    </audio>
+    <audio id="rideSound" class="silent">
+      <source src="./audio/ride.m4a" type="audio/mp4"/>
+    </audio>
+    <audio id="tomSound" class="silent">
+      <source src="./audio/tom.m4a" type="audio/mp4"/>
     </audio>
     <div id="kickDrum" class="drumrow">
-      <p>Kick:</p>
+      <p>Kick</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
     </div>
     <div id="snareDrum" class="drumrow">
-      <p>Snare:</p>
+      <p>Snare</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
       <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
     </div>
+
+
+    <div id="hihatDrum" class="drumrow">
+      <p>HiHat</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <div id="crashDrum" class="drumrow">
+      <p>Crash</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <div id="rideDrum" class="drumrow">
+      <p>Ride</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <div id="tomDrum" class="drumrow">
+      <p>Tom</p>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+      <button class="unselected drumbutton" onclick="toggleDrum(event)"></button>
+    </div>
+    <br>
+    <button id="playbutton" class="notDrumming" onclick="togglePlayPause(), playBeat()">Play</button>
+
+    <div id="viz">
+		<canvas id="analyser" width="1000" height="460"></canvas>
+	  </div>
+  </div>
+</div>
+    <script src="js/recorder.js"></script>
+	  <script src="js/main.js"></script>
     <script src="./js/drumMachine.js"></script>
+    <script src="./js/test.js"></script>
   </body>
 </html>
