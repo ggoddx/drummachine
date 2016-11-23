@@ -15,34 +15,19 @@ function toggleDrum(event)
   }
 }
 
-//plays entire drum beat
-function playBeat(interval)
+//toggles the play/pause button and stops audio when stop button pressed
+function togglePlayPause()
 {
-  console.log(interval);
+  document.getElementById("analyser").style.visibility = 'visible';
   if (document.getElementsByClassName("selected drumbutton")[0])
   {
-    var drumbuttonsGood = validNoDrumbuttons();
     if (document.getElementById("playbutton").className == "notDrumming")
     {
+      var drumbuttonsGood = validNoDrumbuttons();
       if (drumbuttonsGood.testResult)
       {
         document.getElementById("playbutton").className = "drumming";
         document.getElementById("playbutton").innerHTML = "Stop";
-        //interval = 0;
-        //cycleIntervals(interval, drumbuttonsGood.noIntervals);
-        for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
-        {  //plays all drums for a given interval (whether a drum is selected and/or stays silent is handles by playDrum)
-          playDrum(document.getElementsByClassName("drumrow")[i].id, document.getElementsByTagName("audio")[i].id, interval);
-        }
-        interval++;
-        if (interval >= drumbuttonsGood.noIntervals)
-        {
-          interval = 0;
-        }
-        if (document.getElementById("playbutton").className == "drumming")
-        {
-          setTimeout(function(){ playBeat(interval) }, 2000);
-        }
       }
       else
       {
@@ -51,48 +36,7 @@ function playBeat(interval)
     }
     else if (document.getElementById("playbutton").className == "drumming")
     {
-      /*if (interval < 0)
-      {
-        stopBeat();
-        clearTimeout(loop);
-      }
-      else
-      {
-        for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
-        {  //plays all drums for a given interval (whether a drum is selected and/or stays silent is handles by playDrum)
-          playDrum(document.getElementsByClassName("drumrow")[i].id, document.getElementsByTagName("audio")[i].id, interval);
-        }
-        interval++;
-        if (interval >= drumbuttonsGood.noIntervals)
-        {
-          interval = 0;
-        }
-        setTimeout(function(){ playBeat(interval) }, 2000);
-      }*/
-      if (interval == 0)
-      {
-        stopBeat();
-      }
-      else if(interval > 0)
-      {
-        for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
-        {  //plays all drums for a given interval (whether a drum is selected and/or stays silent is handles by playDrum)
-          playDrum(document.getElementsByClassName("drumrow")[i].id, document.getElementsByTagName("audio")[i].id, interval);
-        }
-        interval++;
-        if (interval >= drumbuttonsGood.noIntervals)
-        {
-          interval = 0;
-        }
-        if (document.getElementById("playbutton").className == "drumming")
-        {
-          setTimeout(function(){ playBeat(interval) }, 2000);
-        }
-      }
-      else
-      {
-        alert("Error! negative interval");
-      }
+      stopBeat();
     }
     else
     {
@@ -108,6 +52,16 @@ function playBeat(interval)
   }
 }
 
+//plays entire drum beat
+function playBeat()
+{
+  var interval = 0;
+  var drumbuttonsGood = validNoDrumbuttons();
+  var bpm = 120.0 / 2;
+  var tempo = 1 / bpm * 1 / 4 * 60 * 1000;
+  cycleIntervals(interval, drumbuttonsGood.noIntervals, tempo);
+}
+
 //plays drum
 function playDrum(drum, sound, interval)
 {
@@ -118,6 +72,20 @@ function playDrum(drum, sound, interval)
     document.getElementById(sound).className = "playing";
   }
 }
+// requires audio tags to be listed in the same order as drum rows
+/*function playDrums(interval)
+{
+  var audioclip = 0;
+  for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
+  {
+    if(document.getElementsByClassName("drumrow")[i].getElementsByClassName("drumbutton")[interval].className == "selected drumbutton")
+    {
+      document.getElementsByTagName("audio")[i].mediaGroup = "group" + interval;
+      audioclip = i;
+    }
+  }
+  document.getElementsByTagName("audio")[audioclip].play();
+}*/
 
 //pauses the audio sound and resets the time back to 0
 function resetSound(sound)
@@ -138,7 +106,7 @@ function validNoDrumbuttons()
   {
     if (avgIntervals == document.getElementsByClassName("drumrow")[i].getElementsByClassName("drumbutton").length)
     {
-      posTests++
+      posTests++;
     }
   }
   if (posTests == document.getElementsByClassName("drumrow").length)
@@ -149,23 +117,23 @@ function validNoDrumbuttons()
 }
 
 //loops through intervals to play drum beat
-function cycleIntervals(interval, noIntervals)
+function cycleIntervals(interval, noIntervals, timing)
 {
-  console.log(interval + " " + noIntervals);
-  /*if (interval < 0)
+  console.log(interval + " " + noIntervals + " " + timing)
+  if (document.getElementById("playbutton").className == "drumming")
   {
-    return 0;
-  }*/
-  for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
-  {  //plays all drums for a given interval (whether a drum is selected and/or stays silent is handles by playDrum)
-    playDrum(document.getElementsByClassName("drumrow")[i].id, document.getElementsByTagName("audio")[i].id, interval);
+    for (i = 0; i < document.getElementsByClassName("drumrow").length; i++)
+    {  //plays all drums for a given interval (whether a drum is selected and/or stays silent is handles by playDrum)
+      playDrum(document.getElementsByClassName("drumrow")[i].id, document.getElementsByTagName("audio")[i].id, interval);
+    }
+    //playDrums(interval);
+    interval++;
+    if (interval >= noIntervals)
+    {
+      interval = 0;
+    }
+    setTimeout(function(){ cycleIntervals(interval, noIntervals, timing); }, timing);
   }
-  interval++;
-  if (interval >= noIntervals)
-  {
-    interval = 0;
-  }
-  setTimeout(function(){ cycleIntervals(interval, noIntervals) }, 2000)
 }
 
 //stops drum beat from looping and resets all audio files
@@ -175,6 +143,7 @@ function stopBeat()
   {  //stops all drum sounds when play button is toggled off (stop)
     resetSound(document.getElementsByTagName("audio")[i].id);
   }
+  document.getElementById("analyser").style.visibility = 'hidden';
   document.getElementById("playbutton").className = "notDrumming";
   document.getElementById("playbutton").innerHTML = "Play";
 }
